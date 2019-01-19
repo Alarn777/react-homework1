@@ -1,0 +1,5 @@
+npm install react-google-login
+
+https://www.npmjs.com/package/react-google-login
+
+https://medium.com/@rocksinghajay/login-with-facebook-and-google-in-reactjs-990d818d5dab
