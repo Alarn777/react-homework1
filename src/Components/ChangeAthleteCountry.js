@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import Athlete from './Athlete'
 import { MdAdd } from 'react-icons/md'
-// import data from '../data/data.json'
 
-class AthletesList extends Component {
+class ChangeAthleteCountry extends Component {
     constructor(props) {
         super(props);
         this.state = { athletes: [] };
@@ -112,6 +111,7 @@ class AthletesList extends Component {
     render() {
         return (
             <div className="AthletesList">
+                <h1 style={{marginLeft: '3%'}}>Choose one to Edit</h1>
                 { this.state.athletes.map(this.eachAthlete) }
                 <button
                     id="add"
@@ -126,4 +126,4 @@ class AthletesList extends Component {
     }
 }
 
-export default AthletesList;
+export default ChangeAthleteCountry;

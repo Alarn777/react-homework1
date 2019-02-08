@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
 import Athlete from './Athlete'
 import { MdAdd } from 'react-icons/md'
-// import data from '../data/data.json'
 
-class AthletesList extends Component {
+
+class AthletesByAgeAndCountry extends Component {
     constructor(props) {
         super(props);
-        this.state = { athletes: [] };
+        // this.state = { athletes: [] };
+        this.state = {
+            athletes: [],
+            countryCode: '',
+            age: '',
+            submit: false
+        };
 
-
-
+        this.handleChange = this.handleChange.bind(this);
         this.eachAthlete = this.eachAthlete.bind(this);
         this.update = this.update.bind(this);
         this.delete = this.delete.bind(this);
@@ -18,14 +23,26 @@ class AthletesList extends Component {
 
     }
 
-    componentDidMount() {
-        const url = 'https://athletes-manage.herokuapp.com/athletes';
+
+    fetchAthlete(){
+        const url = 'https://athletes-manage.herokuapp.com/athletes/'+ this.state.age + '/' + this.state.countryCode;
+        let a = url.trim();
+        console.log(a);
+
         fetch(url, {mode: 'cors'})
             .then(res => res.json())
             .then(data => data.map(item =>
                 this.add({id: item.id, firstName: item.firstName, lastName: item.lestName, age: item.age, countryCode: item.countryCode, sportTypes : item.sportTypes})))
 
             .catch(err => console.error(err));
+
+        this.setState({
+            submit: false
+        })
+    }
+
+    componentDidMount() {
+
     }
 
     componentWillMount(){
@@ -45,7 +62,7 @@ class AthletesList extends Component {
         }))
     }
 
-    // destructor + default values
+
     add({id = null,lastName = "test",firstName = "test",age,countryCode,sportTypes}) {
         // console.log(id,lastName,firstName);
         let i = 0;
@@ -76,7 +93,7 @@ class AthletesList extends Component {
         }))
     }
 
-    // default values + Array.reduce
+
     nextID(ideas = []) {
         let max = ideas.reduce((prev, curr) => prev.id > curr.id ? prev.id : curr.id , 0);
         return ++max
@@ -109,21 +126,104 @@ class AthletesList extends Component {
         );
     }
 
+
+    eraseAll = (e) =>{
+        this.setState({
+            athletes: [],
+            countryCode: '',
+            age: '',
+            submit: false
+        })
+    };
+
+
+    handleChange = (e) => {
+    };
+
+    handleChangeCountryCode = (e) => {
+        this.setState({
+            countryCode: e.target.value
+        })
+    };
+
+    handleChangeAge = (e) => {
+        this.setState({
+            age: e.target.value
+        })
+    };
+
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        const form = {
+            countryCode: this.state.countryCode,
+            age: this.state.age,
+        };
+
+        let a = this.state.countryCode;
+        let b = this.state.age;
+        console.log(a);
+        console.log(b);
+
+        if(!isNaN(b) && a.length === 2)
+            this.fetchAthlete();        //find the athlete with input parameters
+
+
+        {/* -----------you would send data to API to get results, I used database for ease, this also clears the form on submit----------------*/}
+        // database.push(form);
+        this.setState({
+            countryCode: a,
+            age: b,
+            submit: true
+
+        })
+    };
+
     render() {
-        return (
-            <div className="AthletesList">
-                { this.state.athletes.map(this.eachAthlete) }
-                <button
-                    id="add"
-                    onClick={ this.add }
-                    className="btn btn-primary"
-                    style={ { marginRight: '7px' } }
-                >
-                    <MdAdd />
-                </button>
-            </div>
-        );
+        if (this.state.submit === true) {
+            return (
+                <div className="AthletesList">
+                    {
+                        this.state.athletes.map(this.eachAthlete)
+                    }
+                    <button className="btn btn-primary" onClick={(e) => this.eraseAll(e)} style={{ marginLeft: '3%',marginTop: '1%'}}>Search Again</button>
+
+                </div>
+            );
+        } else {
+            return (
+                <div>
+                    <form style={{marginLeft: "1%", marginRight: "1%"}}>
+                        <div className="form-group">
+                            <label>
+                                Country Code:
+                                <input className="form-control"
+                                       name='name'
+                                       value={this.state.countryCode}
+                                       onChange={e => this.handleChangeCountryCode(e)}
+                                />
+                            </label>
+                        </div>
+                        <div className="form-group">
+                            <label>
+                                Age:
+                                <input
+                                    className="form-control"
+                                    name='email'
+                                    value={this.state.age}
+                                    onChange={e => this.handleChangeAge(e)}/>
+                            </label>
+                        </div>
+                        <button className="btn btn-primary" onClick={(e) => this.onSubmit(e)}>Send</button>
+                    </form>
+                </div>
+            );
+        }
+
+
+
+
     }
 }
 
-export default AthletesList;
+export default AthletesByAgeAndCountry;
