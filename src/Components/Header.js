@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {NavLink} from "react-router-dom";
-
+import logo from "../public/logo.png"
 
 class Header extends Component
 {
@@ -29,7 +29,13 @@ class Header extends Component
     };
     render() {
         return(
+
          <div style={this.header}>
+             <NavLink exact to ="/" activeStyle={this.activate}>
+                 <img src={logo} style={{height: 35, marginLeft: 0}} alt="Logo" />
+             </NavLink>
+
+
              <NavLink exact to ="/" activeStyle={this.activate}>
                  Home
             </NavLink>
