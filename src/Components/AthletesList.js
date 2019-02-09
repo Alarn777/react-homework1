@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Athlete from './Athlete'
 import { MdAdd } from 'react-icons/md'
-// import data from '../data/data.json'
 
 class AthletesList extends Component {
     constructor(props) {
@@ -72,6 +71,12 @@ class AthletesList extends Component {
         }))
     }
 
+    //upper Case first letter
+    jsUcfirst(string)
+    {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     // default values + Array.reduce
     nextID(ideas = []) {
         let max = ideas.reduce((prev, curr) => prev.id > curr.id ? prev.id : curr.id , 0);
@@ -85,16 +90,16 @@ class AthletesList extends Component {
                 className="card"
                 style={ { width: '33%', marginBottom: '7px', marginLeft: '3%',marginTop: '7px'} }
             >
+
                 <div className="card-body">
                     <Athlete
                         // NOTE: No need this key here! read more: https://reactjs.org/docs/lists-and-keys.html#keys
-                        // key={ `idea${item.id}` }
+                        key={ `idea${item.id}` }
                         index={ item.id }
                         onChange={ this.update }
                         onDelete={ this.delete }
                     >
-                        { console.log(item) }
-                        <h5 className="card-title">{ "Full name: " + item.firstName +" " + item.lastName}</h5>
+                        <h5 className="card-title">{ "Full name: " + this.jsUcfirst(item.firstName) +" " + this.jsUcfirst(item.lastName)}</h5>
                         <p className="card-text">{ "id: " + item.id }</p>
                         <p className="card-text">{ "age: " + item.age }</p>
                         <p className="card-text">{ "country: " + item.countryCode }</p>
@@ -108,15 +113,8 @@ class AthletesList extends Component {
     render() {
         return (
             <div className="AthletesList">
+                <h1 className="title-centered" >All Athletes</h1>
                 { this.state.athletes.map(this.eachAthlete) }
-                <button
-                    id="add"
-                    onClick={ this.add }
-                    className="btn btn-primary"
-                    style={ { marginRight: '7px' } }
-                >
-                    <MdAdd />
-                </button>
             </div>
         );
     }

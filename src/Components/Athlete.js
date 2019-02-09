@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { MdEdit, MdDelete, MdSave } from "react-icons/md"
 
-class Idea extends Component {
+class Athlete extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -45,23 +45,10 @@ class Idea extends Component {
 
     renderUI(props) {
         return (
-            <div className="idea">
+            <div className="athlete">
                 <div>{this.props.children}</div>
                 <span>
-          <button
-              onClick={this.edit}
-              className="btn btn-primary"
-              style={{marginRight: '7px'}}
-          >
-            <MdEdit />
-          </button>
-          <button
-              onClick={this.delete}
-              className="btn btn-primary"
-              style={{marginRight: '7px'}}
-          >
-            <MdDelete />
-          </button>
+
         </span>
             </div>
         )
@@ -72,4 +59,4 @@ class Idea extends Component {
     }
 }
 
-export default Idea;
+export default Athlete;
