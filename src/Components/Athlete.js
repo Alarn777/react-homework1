@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { MdEdit, MdDelete, MdSave } from "react-icons/md"
+import { MdSave } from "react-icons/md"
 
 class Athlete extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            editing: false
-        };
+        this.state = { editing: false };
 
         this.edit = this.edit.bind(this);
         this.delete = this.delete.bind(this);
@@ -25,7 +23,6 @@ class Athlete extends Component {
 
     save(event) {
         event.preventDefault(); // to prevent the default behaviour/ functionality
-        console.log(this.newIdea.value, this.props.index);
         this.props.onChange(this.newIdea.value, this.props.index);
         this.setState({ editing: false })
     }

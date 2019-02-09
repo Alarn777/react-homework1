@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import Athlete from './Athlete'
-import { MdAdd } from 'react-icons/md'
-
 
 class AthletesByAgeAndCountry extends Component {
     constructor(props) {
@@ -26,8 +24,6 @@ class AthletesByAgeAndCountry extends Component {
 
     fetchAthlete(){
         const url = 'https://athletes-manage.herokuapp.com/athletes/'+ this.state.age + '/' + this.state.countryCode;
-        let a = url.trim();
-        console.log(a);
 
         fetch(url, {mode: 'cors'})
             .then(res => res.json())
@@ -159,11 +155,7 @@ class AthletesByAgeAndCountry extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        const form = {
-            countryCode: this.state.countryCode,
-            age: this.state.age,
-        };
-
+       
         let a = this.state.countryCode;
         let b = this.state.age;
         console.log(a);

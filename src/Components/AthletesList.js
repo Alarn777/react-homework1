@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Athlete from './Athlete'
-import { MdAdd } from 'react-icons/md'
 
 class AthletesList extends Component {
     constructor(props) {

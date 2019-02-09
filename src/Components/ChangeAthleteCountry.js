@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Athlete from './Athlete'
-import { MdAdd } from 'react-icons/md'
 
 class ChangeAthleteCountry extends Component {
     constructor(props) {
@@ -56,7 +55,6 @@ class ChangeAthleteCountry extends Component {
 
     // destructor + default values
     add({id = null,lastName = "test",firstName = "test",age,countryCode,sportTypes}) {
-        // console.log(id,lastName,firstName);
         let i = 0;
         let array = [];
         for (i = 0;i < sportTypes.length;i++)
@@ -66,11 +64,7 @@ class ChangeAthleteCountry extends Component {
             array.push(" Times won: " + sportTypes[i].victoryNum);
             if(i !== sportTypes.length-1)
                 array.push(" | ");
-
         }
-        // console.log(array);
-
-
 
         this.setState(prevState => ({
             athletes: [
@@ -111,7 +105,6 @@ class ChangeAthleteCountry extends Component {
                         onChange={ this.update }
                         onDelete={ this.delete }
                     >
-                        {/*{ console.log(item) }*/}
                         <h5 className="card-title">{ "Full name: " + this.jsUcfirst(item.firstName) +" " + this.jsUcfirst(item.lastName)}</h5>
                         <p className="card-text">{ "id: " + item.id }</p>
                         <p className="card-text">{ "age: " + item.age }</p>
@@ -124,20 +117,9 @@ class ChangeAthleteCountry extends Component {
     }
 
     fetchAthlete(){
-        // https://athletes-manage.herokuapp.com/athletecountry
-        // {
-        //     "id": 215221,
-        //     "countryCode": "hk"
-        // }
-
-        // const url = 'https://athletes-manage.herokuapp.com/athletes/'+ this.state.age + '/' + this.state.countryCode;
-        // let a = url.trim();
-        // console.log(a);
-
-
         fetch('https://athletes-manage.herokuapp.com/athletecountry', {
             method: 'POST',
-            mode: 'cors',            //added
+            mode: 'cors',  
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
@@ -190,18 +172,13 @@ class ChangeAthleteCountry extends Component {
                 });
             });
     }
-
-
-
     handleChange = (e) => {
     };
-
     handleChangeId = (e) => {
         this.setState({
             id: e.target.value
         })
     };
-
 
     handleChangeCountryCode = (e) => {
         this.setState({
@@ -212,15 +189,9 @@ class ChangeAthleteCountry extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        const form = {
-            countryCode: this.state.countryCode,
-            id: this.state.id,
-        };
-
+        
         let a = this.state.countryCode;
         let b = this.state.id;
-        console.log(a);
-        console.log(b);
 
         if((!isNaN(b) || !isNaN(a)) && a.length === 2)
             this.fetchAthlete();        //find the athlete with input parameters
