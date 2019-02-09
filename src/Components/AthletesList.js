@@ -7,15 +7,11 @@ class AthletesList extends Component {
     constructor(props) {
         super(props);
         this.state = { athletes: [] };
-
-
-
         this.eachAthlete = this.eachAthlete.bind(this);
         this.update = this.update.bind(this);
         this.delete = this.delete.bind(this);
         this.add = this.add.bind(this);
         this.nextID = this.nextID.bind(this)
-
     }
 
     componentDidMount() {
@@ -23,13 +19,15 @@ class AthletesList extends Component {
         fetch(url, {mode: 'cors'})
             .then(res => res.json())
             .then(data => data.map(item =>
-                this.add({id: item.id, firstName: item.firstName, lastName: item.lestName, age: item.age, countryCode: item.countryCode, sportTypes : item.sportTypes})))
-
+                this.add({
+                    id: item.id, 
+                    firstName: item.firstName, 
+                    lastName: item.lastName, 
+                    age: item.age, 
+                    countryCode: item.countryCode, 
+                    sportTypes : item.sportTypes
+                })))
             .catch(err => console.error(err));
-    }
-
-    componentWillMount(){
-        // this.map(item => this.add({id: item.id, firstName: item.firstName, lestName: item.lestName, age: item.age, countryCode: item.countryCode}))
     }
 
     update(newAthlet, i){
@@ -47,7 +45,6 @@ class AthletesList extends Component {
 
     // destructor + default values
     add({id = null,lastName = "test",firstName = "test",age,countryCode,sportTypes}) {
-        // console.log(id,lastName,firstName);
         let i = 0;
         let array = [];
         for (i = 0;i < sportTypes.length;i++)
@@ -57,7 +54,6 @@ class AthletesList extends Component {
             array.push(" Times won: " + sportTypes[i].victoryNum);
             if(i !== sportTypes.length-1)
                 array.push(" | ");
-
         }
         console.log(array);
 
