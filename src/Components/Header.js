@@ -4,9 +4,9 @@ import {NavLink} from "react-router-dom";
 
 class Header extends Component
 {
-    active = {
-        backgroundColor: "#212F3D",
-        color: "white",
+    activate = {
+        // backgroundColor: "#212F3D",
+        color: "#003366",
         fontWeight: "bold"
     };
     header = {

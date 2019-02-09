@@ -24,3 +24,8 @@ body{
     background-attachment: fixed;
     background-size: cover;
 }
+
+.title-centered{
+    float: none;
+    margin-left: 3%;
+}

@@ -113,14 +113,14 @@ class AthletesList extends Component {
         return (
             <div className="AthletesList">
                 { this.state.athletes.map(this.eachAthlete) }
-                <button
-                    id="add"
-                    onClick={ this.add }
-                    className="btn btn-primary"
-                    style={ { marginRight: '7px' } }
-                >
-                    <MdAdd />
-                </button>
+                {/*<button*/}
+                    {/*id="add"*/}
+                    {/*onClick={ this.add }*/}
+                    {/*className="btn btn-primary"*/}
+                    {/*style={ { marginRight: '7px' } }*/}
+                {/*>*/}
+                    {/*<MdAdd />*/}
+                {/*</button>*/}
             </div>
         );
     }

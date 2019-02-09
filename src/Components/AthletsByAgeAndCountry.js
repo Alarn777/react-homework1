@@ -114,7 +114,7 @@ class AthletesByAgeAndCountry extends Component {
                         onChange={ this.update }
                         onDelete={ this.delete }
                     >
-                        { console.log(item) }
+                        {/*{ console.log(item) }*/}
                         <h5 className="card-title">{ "Full name: " + item.firstName +" " + item.lastName}</h5>
                         <p className="card-text">{ "id: " + item.id }</p>
                         <p className="card-text">{ "age: " + item.age }</p>
@@ -183,6 +183,7 @@ class AthletesByAgeAndCountry extends Component {
         if (this.state.submit === true) {
             return (
                 <div className="AthletesList">
+                    <h1 className="title-centered" >Get Athletes By Age And Country</h1>
                     {
                         this.state.athletes.map(this.eachAthlete)
                     }
@@ -193,6 +194,7 @@ class AthletesByAgeAndCountry extends Component {
         } else {
             return (
                 <div>
+                    <h1 style={{marginLeft: "1%", marginRight: "1%"}} >Get Athletes By Age And Country</h1>
                     <form style={{marginLeft: "1%", marginRight: "1%"}}>
                         <div className="form-group">
                             <label>
