@@ -5,12 +5,10 @@ import logo from "../public/logo.png"
 class Header extends Component
 {
     activate = {
-        // backgroundColor: "#212F3D",
         color: "#003366",
         fontWeight: "bold"
     };
     header = {
-        // backgroundColor: "aliceblue",
         listStyle: "none",
         padding: "1%",
         display: "flex",
@@ -23,9 +21,6 @@ class Header extends Component
         backgroundAttachment: "fixed",
         backgroundSize: "cover"
 
-        // backgroundColor: "#00bb77",
-        // backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpolygon fill='%23000' fill-opacity='.1' points='120 0 120 60 90 30 60 0 0 0 0 0 60 60 0 120 60 120 90 90 120 60 120 0'/%3E%3C/svg%3E")`,
-        //
     };
     render() {
         return(

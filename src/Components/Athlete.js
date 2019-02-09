@@ -48,20 +48,7 @@ class Athlete extends Component {
             <div className="athlete">
                 <div>{this.props.children}</div>
                 <span>
-          {/*<button*/}
-              {/*onClick={this.edit}*/}
-              {/*className="btn btn-primary"*/}
-              {/*style={{marginRight: '7px'}}*/}
-          {/*>*/}
-            {/*<MdEdit />*/}
-          {/*</button>*/}
-          {/*<button*/}
-              {/*onClick={this.delete}*/}
-              {/*className="btn btn-primary"*/}
-              {/*style={{marginRight: '7px'}}*/}
-          {/*>*/}
-            {/*<MdDelete />*/}
-          {/*</button>*/}
+
         </span>
             </div>
         )

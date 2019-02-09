@@ -64,7 +64,7 @@ class AthletesByAgeAndCountry extends Component {
 
 
     add({id = null,lastName = "test",firstName = "test",age,countryCode,sportTypes}) {
-        // console.log(id,lastName,firstName);
+
         let i = 0;
         let array = [];
         for (i = 0;i < sportTypes.length;i++)
@@ -99,6 +99,11 @@ class AthletesByAgeAndCountry extends Component {
         return ++max
     }
 
+    jsUcfirst(string)
+    {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     eachAthlete(item, i) {
         return (
             <div
@@ -108,14 +113,13 @@ class AthletesByAgeAndCountry extends Component {
             >
                 <div className="card-body">
                     <Athlete
-                        // NOTE: No need this key here! read more: https://reactjs.org/docs/lists-and-keys.html#keys
-                        // key={ `idea${item.id}` }
+
                         index={ item.id }
                         onChange={ this.update }
                         onDelete={ this.delete }
                     >
-                        {/*{ console.log(item) }*/}
-                        <h5 className="card-title">{ "Full name: " + item.firstName +" " + item.lastName}</h5>
+
+                        <h5 className="card-title">{ "Full name: " + this.jsUcfirst(item.firstName) +" " + this.jsUcfirst(item.lastName)}</h5>
                         <p className="card-text">{ "id: " + item.id }</p>
                         <p className="card-text">{ "age: " + item.age }</p>
                         <p className="card-text">{ "country: " + item.countryCode }</p>
@@ -168,9 +172,6 @@ class AthletesByAgeAndCountry extends Component {
         if(!isNaN(b) && a.length === 2)
             this.fetchAthlete();        //find the athlete with input parameters
 
-
-        {/* -----------you would send data to API to get results, I used database for ease, this also clears the form on submit----------------*/}
-        // database.push(form);
         this.setState({
             countryCode: a,
             age: b,

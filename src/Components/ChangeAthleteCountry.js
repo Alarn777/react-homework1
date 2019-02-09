@@ -91,6 +91,11 @@ class ChangeAthleteCountry extends Component {
         return ++max
     }
 
+    jsUcfirst(string)
+    {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     eachAthlete(item, i) {
         return (
             <div
@@ -107,7 +112,7 @@ class ChangeAthleteCountry extends Component {
                         onDelete={ this.delete }
                     >
                         {/*{ console.log(item) }*/}
-                        <h5 className="card-title">{ "Full name: " + item.firstName +" " + item.lastName}</h5>
+                        <h5 className="card-title">{ "Full name: " + this.jsUcfirst(item.firstName) +" " + this.jsUcfirst(item.lastName)}</h5>
                         <p className="card-text">{ "id: " + item.id }</p>
                         <p className="card-text">{ "age: " + item.age }</p>
                         <p className="card-text">{ "country: " + item.countryCode }</p>
